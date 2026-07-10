@@ -1,5 +1,5 @@
 /* =========================================
-   THEME LOGIC
+   THEME LOGIC (Global)
    ========================================= */
 const themeBtn = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
@@ -37,30 +37,26 @@ if (themeBtn) {
 initializeTheme();
 
 /* =========================================
-   BLOG PAGE LOGIC (Search, Filters & Modal)
+   BLOG PAGE LOGIC (Isolated safely)
    ========================================= */
-const blogList = document.getElementById('blog-list');
+const searchBar = document.getElementById('search-bar');
+const filterTags = document.querySelectorAll('.filter-tag');
+const blogPosts = document.querySelectorAll('.blog-post');
+const loadMoreBtn = document.getElementById('load-more');
+const postModal = document.getElementById('post-modal');
+const closePostModalBtn = document.getElementById('close-modal');
 
-if (blogList) {
-    const searchBar = document.getElementById('search-bar');
-    const filterTags = document.querySelectorAll('.filter-tag');
-    const blogPosts = document.querySelectorAll('.blog-post');
-    const loadMoreBtn = document.getElementById('load-more');
-    const modal = document.getElementById('post-modal');
-    const closeModalBtn = document.getElementById('close-modal');
-
-    // 1. Search Functionality
-    if (searchBar) {
-        searchBar.addEventListener('keyup', (e) => {
-            const searchString = e.target.value.toLowerCase();
-            blogPosts.forEach(post => {
-                const title = post.querySelector('.blog-title').innerText.toLowerCase();
-                post.style.display = title.includes(searchString) ? 'flex' : 'none';
-            });
+if (searchBar) {
+    searchBar.addEventListener('keyup', (e) => {
+        const searchString = e.target.value.toLowerCase();
+        blogPosts.forEach(post => {
+            const title = post.querySelector('.blog-title').innerText.toLowerCase();
+            post.style.display = title.includes(searchString) ? 'flex' : 'none';
         });
-    }
+    });
+}
 
-    // 2. Category Tag Filtering
+if (filterTags.length > 0) {
     filterTags.forEach(tag => {
         tag.addEventListener('click', () => {
             filterTags.forEach(t => t.classList.remove('active'));
@@ -77,57 +73,55 @@ if (blogList) {
             });
         });
     });
+}
 
-    // 3. Load More
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', () => {
-            alert('This will load older posts from the CMS once connected!');
-        });
-    }
+if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+        alert('This will load older posts from the CMS once connected!');
+    });
+}
 
-    // 4. Modal Open & Close Logic
-    if (modal) {
-        blogPosts.forEach(post => {
-            post.addEventListener('click', () => {
-                const title = post.querySelector('.blog-title').innerText;
-                const date = post.querySelector('.blog-date').innerText;
-                const category = post.querySelector('.blog-category').innerText;
-                const fullBodyContainer = post.querySelector('.blog-full-body');
+if (postModal && blogPosts.length > 0) {
+    blogPosts.forEach(post => {
+        post.addEventListener('click', () => {
+            const title = post.querySelector('.blog-title').innerText;
+            const date = post.querySelector('.blog-date').innerText;
+            const category = post.querySelector('.blog-category').innerText;
+            const fullBodyContainer = post.querySelector('.blog-full-body');
 
-                document.getElementById('modal-title').innerText = title;
-                document.getElementById('modal-date').innerText = date;
-                document.getElementById('modal-category').innerText = category;
-                
-                if (fullBodyContainer) {
-                    document.getElementById('modal-body').innerHTML = fullBodyContainer.innerHTML;
-                }
-
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; 
-            });
-        });
-
-        const closeModal = () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        };
-
-        closeModalBtn.addEventListener('click', closeModal);
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-date').innerText = date;
+            document.getElementById('modal-category').innerText = category;
+            
+            if (fullBodyContainer) {
+                document.getElementById('modal-body').innerHTML = fullBodyContainer.innerHTML;
             }
+
+            postModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
         });
+    });
+
+    const closePostModal = () => {
+        postModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    if (closePostModalBtn) {
+        closePostModalBtn.addEventListener('click', closePostModal);
     }
+    postModal.addEventListener('click', (e) => {
+        if (e.target === postModal) closePostModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && postModal.classList.contains('active')) {
+            closePostModal();
+        }
+    });
 }
 
 /* =========================================
-   SILENT DYNAMIC FEEDBACK MODAL LOGIC (AJAX)
+   DECOUPLED FEEDBACK MODAL LOGIC (Works everywhere)
    ========================================= */
 const feedbackTrigger = document.getElementById('feedback-trigger');
 const feedbackModal = document.getElementById('feedback-modal');
@@ -137,15 +131,14 @@ const formWrap = document.getElementById('feedback-form-wrap');
 const successWrap = document.getElementById('feedback-success-wrap');
 const feedbackSubmitBtn = document.getElementById('feedback-submit-btn');
 
-if (feedbackTrigger && feedbackModal && closeFeedbackBtn) {
+if (feedbackTrigger && feedbackModal) {
     
-    // Open Feedback Window
-    feedbackTrigger.addEventListener('click', () => {
+    feedbackTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
         feedbackModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
 
-    // Close Window & Refresh Elements Smoothly
     const closeFeedback = () => {
         feedbackModal.classList.remove('active');
         document.body.style.overflow = 'auto';
@@ -161,17 +154,20 @@ if (feedbackTrigger && feedbackModal && closeFeedbackBtn) {
         }, 300);
     };
 
-    closeFeedbackBtn.addEventListener('click', closeFeedback);
+    if (closeFeedbackBtn) {
+        closeFeedbackBtn.addEventListener('click', closeFeedback);
+    }
+
     feedbackModal.addEventListener('click', (e) => {
         if (e.target === feedbackModal) closeFeedback();
     });
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && feedbackModal.classList.contains('active')) {
             closeFeedback();
         }
     });
 
-    // Handle background submission quietly
     if (feedbackForm) {
         feedbackForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -192,22 +188,19 @@ if (feedbackTrigger && feedbackModal && closeFeedbackBtn) {
                 if (response.ok) {
                     if (formWrap) formWrap.style.display = 'none';
                     if (successWrap) successWrap.classList.add('active');
-                    
-                    // Closes pop-up box automatically after 2.5 seconds
                     setTimeout(closeFeedback, 2500);
                 } else {
-                    alert('Network error detected. Please try submitting again.');
+                    alert('Network error. Please try again.');
                     if (feedbackSubmitBtn) {
-                        feedbackSubmitBtn.innerText = "Send Feedback";
                         feedbackSubmitBtn.disabled = false;
+                        feedbackSubmitBtn.innerText = "Send Feedback";
                     }
                 }
             } catch (error) {
-                console.error('Submission Error:', error);
-                alert('Something failed behind the scenes. Please verify connectivity.');
+                alert('Submission failed. Check your connection.');
                 if (feedbackSubmitBtn) {
-                    feedbackSubmitBtn.innerText = "Send Feedback";
                     feedbackSubmitBtn.disabled = false;
+                    feedbackSubmitBtn.innerText = "Send Feedback";
                 }
             }
         });
