@@ -51,8 +51,6 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    
-    /* Apply fade-in to every page load */
     animation: fadeIn 0.8s ease-in;
 }
 
@@ -134,15 +132,6 @@ p {
     color: var(--heading-color);
 }
 
-/* Feedback Card */
-.feedback-card {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-    border: 1px solid var(--card-border);
-}
-
 .form-group {
     margin-bottom: 1.5rem;
     display: flex;
@@ -213,9 +202,32 @@ footer {
     transform: translateY(-3px);
 }
 
-/* =========================================
-   BLOG PAGE STYLES
-   ========================================= */
+/* Floating Action Button (Squared) */
+.floating-feedback-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--accent-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 8px; /* Squared layout shape preference */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.floating-feedback-btn:hover {
+    background-color: var(--accent-color);
+    color: #000;
+    transform: translateY(-3px);
+}
 
 /* Search Bar */
 .search-input {
@@ -333,12 +345,9 @@ footer {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.85);
     z-index: 9999;
-    
-    /* Animation settings */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -361,6 +370,13 @@ footer {
     position: relative;
     overflow-y: auto; 
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Sizing Adjustments Specifically for Feedback Box */
+.feedback-modal-box {
+    max-width: 500px;
+    height: auto;
+    padding: 2.5rem;
 }
 
 .close-btn {
@@ -413,4 +429,22 @@ footer {
     border-radius: 8px;
     margin: 2rem 0;
     border: 1px solid var(--card-border);
+}
+
+/* Interactive AJAX Status Blocks */
+.success-state {
+    display: none;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.success-state.active {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.success-icon {
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
 }

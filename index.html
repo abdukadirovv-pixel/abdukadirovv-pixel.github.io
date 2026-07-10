@@ -35,28 +35,48 @@
             <p>Feel free to look around, read my blog posts, or reach out directly using the automated forms below!</p>
         </section>
 
-        <section class="feedback-card">
-    <h2>Leave some Feedback</h2>
-    
-    <form action="https://api.web3forms.com/submit" method="POST">
-
-        <input type="hidden" name="access_key" value="3434ec32-d96c-4555-9f42-986d51460357">
-        
-        <div class="form-group">
-            <label for="telegram">Telegram Username *</label>
-            <input type="text" name="name" id="telegram" placeholder="@username" required>
-        </div>
-
-        <div class="form-group">
-            <label for="opinion">Your Opinion/Feedback *</label>
-            <textarea name="message" id="opinion" rows="4" placeholder="What do you think of the website?" required></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">Send Feedback</button>
-    </form>
-</section>
-
     </main>
+
+    <!-- Floating Squared Feedback Button -->
+    <button id="feedback-trigger" class="floating-feedback-btn" aria-label="Open Feedback Form">
+        <i class="fa-solid fa-envelope"></i>
+    </button>
+
+    <!-- Feedback Modal Overlay -->
+    <div id="feedback-modal" class="modal-overlay">
+        <div class="modal-content feedback-modal-box">
+            <button id="close-feedback-modal" class="close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <!-- Form State -->
+            <div id="feedback-form-wrap">
+                <h2>Leave some Feedback</h2>
+                <form id="ajax-feedback-form">
+                    <input type="hidden" name="access_key" value="3434ec32-d96c-4555-9f42-986d51460357">
+                    
+                    <div class="form-group">
+                        <label for="telegram">Telegram Username *</label>
+                        <input type="text" name="name" id="telegram" placeholder="@username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="opinion">Your Opinion/Feedback *</label>
+                        <textarea name="message" id="opinion" rows="4" placeholder="What do you think of the website?" required></textarea>
+                    </div>
+
+                    <button type="submit" id="feedback-submit-btn" class="submit-btn">Send Feedback</button>
+                </form>
+            </div>
+
+            <!-- Seamless AJAX Success Notification -->
+            <div id="feedback-success-wrap" class="success-state">
+                <i class="fa-solid fa-circle-check success-icon"></i>
+                <h2>Thank You!</h2>
+                <p>Your message flew securely directly into my email inbox.</p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <a href="https://t.me/snxrzip" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
