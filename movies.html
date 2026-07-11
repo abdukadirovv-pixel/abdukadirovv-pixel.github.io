@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="games_of_thrones-removebg-preview.png">
+    <title>sanchez's blog - Watch Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">sanchez's blog</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="movies.html" class="active">Watch Library</a>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <!-- Watch Library Section -->
+        <section class="movie-library-section">
+            <h2 class="library-heading">WATCH LIBRARY</h2>
+            
+            <div class="movie-library-container">
+                <!-- Left Side: Vertical Spinning Selector List -->
+                <div class="movie-menu-column">
+                    <div class="movie-menu-list" id="movie-menu">
+                        <div class="movie-menu-item active" data-index="0">Interstellar</div>
+                        <div class="movie-menu-item" data-index="1">Game of Thrones</div>
+                        <div class="movie-menu-item" data-index="2">House Of The Dragon</div>
+                        <div class="movie-menu-item" data-index="3">The Notebook</div>
+                        <div class="movie-menu-item" data-index="4">Others</div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Animated Content -->
+                <div class="movie-details-column" id="movie-details-box">
+                    <h1 id="movie-display-title" class="movie-display-title">Interstellar</h1>
+                    
+                    <!-- Meta Information matching your requested layout -->
+                    <div class="movie-display-meta">
+                        <div class="meta-line">
+                            <span id="movie-display-studio">PARAMOUNT PICTURES</span> • RATING: <span id="movie-display-rating" class="highlight-text">9.5/10</span>
+                        </div>
+                        <div class="meta-line">
+                            FAVORITE CHARACTER: <span id="movie-display-character" class="highlight-text">Joseph Cooper</span>
+                        </div>
+                    </div>
+
+                    <p id="movie-display-review" class="movie-display-review">
+                        The absolute peak of modern sci-fi cinema. Christopher Nolan really created a masterpice by visualizing the vastness of space and the emotional depth of human connection. I really got trumatized until I watched it more than two times. After the first time, I was not able to find answers of some questions such as "where did he get stuck?" or "why he told her daughter that he is coming back, even if he knew he won't?" So yeah I highly recommend to give it a try.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Feedback Modal Trigger & Content (Kept Exactly As Is) -->
+    <button id="feedback-trigger" class="floating-feedback-btn" aria-label="Open Feedback Form">
+        <i class="fa-solid fa-comment-dots"></i> Feedback
+    </button>
+
+    <div id="feedback-modal" class="modal-overlay">
+        <div class="modal-content feedback-modal-box">
+            <button id="close-feedback-modal" class="close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div id="feedback-form-wrap">
+                <h2>Leave some Feedback</h2>
+                <form id="ajax-feedback-form">
+                    <input type="hidden" name="access_key" value="3434ec32-d96c-4555-9f42-986d51460357">
+                    
+                    <div class="form-group">
+                        <label for="telegram">Telegram Username *</label>
+                        <input type="text" name="name" id="telegram" placeholder="@username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="opinion">Your Opinion/Feedback *</label>
+                        <textarea name="message" id="opinion" rows="4" placeholder="What do you think of the website?" required></textarea>
+                    </div>
+
+                    <button type="submit" id="feedback-submit-btn" class="submit-btn">Send Feedback</button>
+                </form>
+            </div>
+
+            <div id="feedback-success-wrap" class="success-state">
+                <i class="fa-solid fa-circle-check success-icon"></i>
+                <h2>Thank You!</h2>
+                <p>Your message flew securely directly into my email inbox.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Kept Exactly As Is) -->
+    <footer>
+        <a href="https://t.me/snxrzip" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://www.instagram.com/snxr.zip?igsh=NjJ0cmE4MzF5bGdq" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

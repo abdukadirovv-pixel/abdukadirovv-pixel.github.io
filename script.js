@@ -206,3 +206,80 @@ if (feedbackTrigger && feedbackModal) {
         });
     }
 }
+
+/* =========================================
+   ANIMATED WATCH LIBRARY INTERACTION
+   ========================================= */
+const watchData = [
+    {
+        title: "Interstellar",
+        studio: "PARAMOUNT PICTURES",
+        rating: "9.5/10",
+        character: "Joseph Cooper",
+        review: "The absolute peak of modern sci-fi cinema. Christopher Nolan really created a masterpice by visualizing the vastness of space and the emotional depth of human connection. I really got trumatized until I watched it more than two times. After the first time, I was not able to find answers of some questions such as (where did he get stuck?) or (why he told her daughter that he is coming back, even if he knew he won't?) So yeah I highly recommend to give it a try."
+    },
+    {
+        title: "Game of Thrones",
+        studio: "HBO",
+        rating: "9.0/10",
+        character: "Tyrion Lannister",
+        review: " A groundbreaking series with complex characters and difficult political choices. Despite being relatives to each other, the plot is full of betrayals and unexpected twits. The show is stunning and the acting is top-notch, despite the controversial ending the journey to get there was worth it. Tyrion Lannister is the most complex and intelligent character in the show. He somehow manages to survive by using his mind and wit, even when he is surrounded by powerful enemies. His character is both satisfying and tragic at the same time, making his role unforgettable in the series. Overall, Game of Thrones is a must-watch for anyone who enjoys epic fantasy and complexity."
+    },
+    {
+        title: "House Of The Dragon",
+        studio: "HBO",
+        rating: "7,5/10",
+        character: "Daemon Targaryen",
+        review: "A thrilling prequel to the beloved Game of Thrones, House of the dragon brings the House Targaryen's story to life with high visuals and compelling storytelling. We can see the situation of the old houses 172 years before the Game of Thrones. Despite the series are not fully published yet, some of the series already managed to get 9.4 rating. The plot is similar to Game of Thrones but the behavior of characters and the point of view is different. I can recommend this to the fans of Game of Thrones. I did give a 7.5 rating for myself, because I yet did not see the all series and need a rewatch, in the future." 
+    },
+    {
+        title: "The Notebook",
+        studio: "Paramount Pictures",
+        rating: "8.0/10",
+        character: "Noah Calhoun",
+        review: "A touching romantic drama that explores the power of love and memory. The film beautifully descibes the difference between what is the love in teenage years and what is the love in adult years. The Notebook also dives into the problems which couples may face. Despite the sad parts, it gives us a chance to see the beauty of love and the importance of cherishing every moment with our loved ones. The performances by Ryan Gosling and Rachel McAdams are heartfelt and captivating, making their love story unforgettable. Overall, The Notebook is a timeless classic that will leave you with a warm heart and believing in the power of true love."
+    },
+    {
+        title: "Others",
+        studio: "N/A",
+        rating: "N/A",
+        character: "N/A",
+        review: "The creator is currently working on this section. You will be able to see more opinions later when he stops being lazy, until then ejoy exploring the other sections of the website. Thank you for your patience and understanding. BTW, do not forget to leave something in feedback section at the bottom right of the page. It will be highly appreciated."
+    }
+];
+
+const menuItems = document.querySelectorAll('.movie-menu-item');
+const detailsBox = document.getElementById('movie-details-box');
+const displayTitle = document.getElementById('movie-display-title');
+const displayStudio = document.getElementById('movie-display-studio');
+const displayRating = document.getElementById('movie-display-rating');
+const displayCharacter = document.getElementById('movie-display-character');
+const displayReview = document.getElementById('movie-display-review');
+
+if (menuItems.length > 0 && detailsBox) {
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (item.classList.contains('active')) return;
+
+            menuItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+
+            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            detailsBox.classList.add('data-changing');
+
+            const index = parseInt(item.getAttribute('data-index'), 10);
+            const targetWatch = watchData[index];
+
+            setTimeout(() => {
+                displayTitle.innerText = targetWatch.title;
+                displayStudio.innerText = targetWatch.studio;
+                displayRating.innerText = targetWatch.rating;
+                displayCharacter.innerText = targetWatch.character;
+                displayReview.innerText = targetWatch.review;
+
+                detailsBox.classList.remove('data-changing');
+            }, 250); 
+        });
+    });
+}
