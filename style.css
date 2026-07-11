@@ -630,3 +630,76 @@ footer {
         padding-bottom: 80px;
     }
 }
+/* Timeline Container */
+.timeline-section { margin-top: 4rem; }
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0; 
+    width: 90%;
+    max-width: 750px; 
+    margin: 2rem auto; 
+}
+
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 30px; 
+    width: calc(100% - 60px);
+    height: 100px;
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+}
+/* 3. Ensure circles don't squish */
+.timeline-item {
+    flex-shrink: 0; /* Prevents circles from turning into ovals on small screens */
+    width: 60px;
+    height: 60px;
+    background: var(--bg-color);
+    border: 3px solid #458b8b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* 4. Use nth-of-type so it ignores the SVG and only counts the divs */
+.timeline-item:nth-of-type(odd) { margin-top: -50px; } /* Goes UP to hit Y=0 */
+.timeline-item:nth-of-type(even) { margin-top: 50px; } /* Goes DOWN to hit Y=100 */
+
+/* Tooltip animation */
+.timeline-item::after {
+    content: attr(data-event);
+    position: absolute;
+    bottom: -40px;
+    left: 50%; /* Pushes text to the middle */
+    transform: translateX(-50%); /* Pulls it back to dead-center */
+    width: 140px;
+    font-size: 0.75rem;
+    color: var(--muted-text);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap; /* Prevents text from awkwardly stacking */
+}
+
+.timeline-item:hover::after { opacity: 1; }
+
+/* Hover effect */
+.timeline-item:hover {
+    transform: scale(1.2);
+    background: #458b8b;
+    color: #fff;
+    border-color: #fff;
+}
