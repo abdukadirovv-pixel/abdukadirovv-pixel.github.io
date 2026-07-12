@@ -771,44 +771,49 @@ footer {
         display: none;
     }
 }
-/* Container for the whole header */
+/* --- NEW HEADER STYLES --- */
 .site-header {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers everything horizontally */
+    align-items: center;
     padding: 2rem 1rem;
-    margin-bottom: 2rem;
-    color: white; /* Adjust if your background isn't dark */
+    color: white;
 }
 
-/* Style for "Sanjar" */
 .site-name {
     font-size: 2.5rem;
     margin: 0;
-    font-weight: bold;
 }
 
-/* Style for "alias: sanchez" */
 .site-alias {
     font-size: 1.2rem;
-    color: #888; /* A subtle grey color */
+    color: #888;
     margin: 0.5rem 0 1.5rem 0;
 }
 
-/* Style for the navigation links */
 .site-nav {
     display: flex;
-    gap: 20px; /* Space between links */
+    gap: 20px;
+    align-items: center;
 }
 
+/* Force links to look professional and remove underline */
 .site-nav a {
     color: white;
     text-decoration: none;
     font-size: 1.1rem;
-    text-transform: lowercase;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 .site-nav a:hover {
-    color: #458b8b; /* Matches your theme color */
+    color: #458b8b;
+}
+
+/* Ensure the theme toggle fits in the nav */
+.theme-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
 }
