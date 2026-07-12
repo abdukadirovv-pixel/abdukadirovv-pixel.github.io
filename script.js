@@ -283,3 +283,31 @@ if (menuItems.length > 0 && detailsBox) {
         });
     });
 }
+/* =========================================
+   SECRET PIN LOGIC (Supports per-post PINs)
+   ========================================= */
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'unlock-btn') {
+        const modalBody = document.getElementById('modal-body');
+        
+        if (modalBody) {
+            const pinInput = modalBody.querySelector('#pin-input');
+            const errorText = modalBody.querySelector('#pin-error');
+            const lockScreen = modalBody.querySelector('#lock-screen');
+            const secretContent = modalBody.querySelector('#secret-content');
+
+            const enteredPin = pinInput ? pinInput.value : "";
+            
+            // Get the specific PIN from the HTML data-pin attribute
+            const correctPin = lockScreen ? lockScreen.getAttribute('data-pin') : "";
+
+            if (enteredPin === correctPin) {
+                if (lockScreen) lockScreen.style.display = "none";
+                if (secretContent) secretContent.style.display = "block";
+            } else {
+                if (errorText) errorText.innerText = "Incorrect PIN. Try again!";
+                if (pinInput) pinInput.value = ""; 
+            }
+        }
+    }
+});

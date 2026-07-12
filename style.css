@@ -703,3 +703,65 @@ footer {
     color: #fff;
     border-color: #fff;
 }
+
+/* The Lock Box */
+.pin-container {
+    background: var(--bg-color, #1a1a1a);
+    border: 2px solid #458b8b;
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    max-width: 400px;
+    margin: 3rem auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* The Input Field */
+.pin-container input {
+    padding: 0.75rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+    border: 1px solid #458b8b;
+    background: #2a2a2a;
+    color: #fff;
+    width: 70%;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 3px; /* Makes the dots spaced out nicely */
+}
+
+.pin-container input:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(69, 139, 139, 0.6);
+}
+
+/* The Unlock Button */
+.pin-container button {
+    background: #458b8b;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.pin-container button:hover {
+    background: #356b6b;
+    transform: translateY(-2px);
+}
+
+/* Error Message */
+.error-text {
+    color: #ff4c4c;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    height: 15px; /* Keeps the box from stretching when text appears */
+}
+
+/* The most important part: Hides the blog by default */
+.hidden-content {
+    display: none; 
+}
