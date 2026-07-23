@@ -240,11 +240,39 @@ const watchData = [
         review: "A touching romantic drama that explores the power of love and memory. The film beautifully descibes the difference between what is the love in teenage years and what is the love in adult years. The Notebook also dives into the problems which couples may face. Despite the sad parts, it gives us a chance to see the beauty of love and the importance of cherishing every moment with our loved ones. The performances by Ryan Gosling and Rachel McAdams are heartfelt and captivating, making their love story unforgettable. Overall, The Notebook is a timeless classic that will leave you with a warm heart and believing in the power of true love."
     },
     {
-        title: "Others",
-        studio: "N/A",
-        rating: "N/A",
-        character: "N/A",
-        review: "The creator is currently working on this section. You will be able to see more opinions later when he stops being lazy, until then ejoy exploring the other sections of the website. Thank you for your patience and understanding. BTW, do not forget to leave something in feedback section at the bottom right of the page. It will be highly appreciated."
+        title: "The Godfather",
+        studio: "Paramount Pictures",
+        rating: "9.9/10",
+        character: "Michael Corleone",
+        review: "This one is a masterpice which dives into deep family dynamics and organized crime. The Godfather really teaches the audience about family matters and its bonds. Movie has parts and each has a unique value. No comment needed by far!"
+    },
+    {
+        title: "Transformers (bayverse)",
+        studio: "Paramount Pictures",
+        rating: "10/10",
+        character: "Bumblebee",
+        review: "This one is the best franchise I have ever seen. I can write an 1000 words essay about the film. However it is better to give it a watch. Believe me you won't regret your time. Well, when it comes to other transformers movies(non bayverse) they are not that good, I could give 7-7,5."
+    },
+    {
+        title: "Harry Potter",
+        studio: "Warner Bros enetertainment",
+        rating: "111/10",
+        character: "Severus Snape",
+        review: "Actually everybody loves Harry Potter films. A guy whose family got killed secretly. But at the end after realizing who he really is, he realized his capabilities and did what he meant to do. Yeah it is clear that he witnessed a lot of difficulties in his way but in all this, his parents' souls were by his side and supported him. Also Dumbledore and Severus Snape protected him and yes his firends too. In my opinion, movie gives unforgettable emotions and shares different moods throughout the journey."
+    },
+    {
+        title: "Avengers",
+        studio: "Marvel",
+        rating: "10/10",
+        character: "Thor",
+        review: "I believe there is no need a comment for that one guyzz."
+    },
+    {
+        title: "Spider Man",
+        studio: "Marvel",
+        rating: "8/10",
+        character: "Tom Holland",
+        review: "That one movie really gave me a hope of becoming a spider man frrr (when i was a kid btw). All the films are great but the ones which Tom Holland had a scene time is really enjoyable. Young nerdy and enjoyable kiddo which describes the spider man exactly."
     }
 ];
 
