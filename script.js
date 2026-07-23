@@ -273,6 +273,13 @@ const watchData = [
         rating: "8/10",
         character: "Tom Holland",
         review: "That one movie really gave me a hope of becoming a spider man frrr (when i was a kid btw). All the films are great but the ones which Tom Holland had a scene time is really enjoyable. Young nerdy and enjoyable kiddo which describes the spider man exactly."
+    },
+    {
+        title: "others",
+        studio: "N/A",
+        rating: "N/A",
+        character: "you",
+        review: "The creator is a bit lazy, sorry I will add some more, but later."
     }
 ];
 
