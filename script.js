@@ -50,8 +50,11 @@ if (searchBar) {
     searchBar.addEventListener('keyup', (e) => {
         const searchString = e.target.value.toLowerCase();
         blogPosts.forEach(post => {
-            const title = post.querySelector('.blog-title').innerText.toLowerCase();
-            post.style.display = title.includes(searchString) ? 'flex' : 'none';
+            const titleElement = post.querySelector('.blog-title');
+            if (titleElement) {
+                const title = titleElement.innerText.toLowerCase();
+                post.style.display = title.includes(searchString) ? 'flex' : 'none';
+            }
         });
     });
 }
@@ -84,17 +87,18 @@ if (loadMoreBtn) {
 if (postModal && blogPosts.length > 0) {
     blogPosts.forEach(post => {
         post.addEventListener('click', () => {
-            const title = post.querySelector('.blog-title').innerText;
-            const date = post.querySelector('.blog-date').innerText;
-            const category = post.querySelector('.blog-category').innerText;
+            const titleEl = post.querySelector('.blog-title');
+            const dateEl = post.querySelector('.blog-date');
+            const categoryEl = post.querySelector('.blog-category');
             const fullBodyContainer = post.querySelector('.blog-full-body');
 
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-date').innerText = date;
-            document.getElementById('modal-category').innerText = category;
+            if (titleEl) document.getElementById('modal-title').innerText = titleEl.innerText;
+            if (dateEl) document.getElementById('modal-date').innerText = dateEl.innerText;
+            if (categoryEl) document.getElementById('modal-category').innerText = categoryEl.innerText;
             
             if (fullBodyContainer) {
-                document.getElementById('modal-body').innerHTML = fullBodyContainer.innerHTML;
+                const modalBody = document.getElementById('modal-body');
+                if (modalBody) modalBody.innerHTML = fullBodyContainer.innerHTML;
             }
 
             postModal.classList.add('active');
@@ -132,7 +136,6 @@ const successWrap = document.getElementById('feedback-success-wrap');
 const feedbackSubmitBtn = document.getElementById('feedback-submit-btn');
 
 if (feedbackTrigger && feedbackModal) {
-    
     feedbackTrigger.addEventListener('click', (e) => {
         e.preventDefault();
         feedbackModal.classList.add('active');
@@ -216,49 +219,49 @@ const watchData = [
         studio: "PARAMOUNT PICTURES",
         rating: "9.5/10",
         character: "Joseph Cooper",
-        review: "The absolute peak of modern sci-fi cinema. Christopher Nolan really created a masterpice by visualizing the vastness of space and the emotional depth of human connection. I really got trumatized until I watched it more than two times. After the first time, I was not able to find answers of some questions such as (where did he get stuck?) or (why he told her daughter that he is coming back, even if he knew he won't?) So yeah I highly recommend to give it a try."
+        review: "The absolute peak of modern sci-fi cinema. Christopher Nolan really created a masterpice by visualizing the vastness of space and the emotional depth of human connection..."
     },
     {
         title: "Game of Thrones",
         studio: "HBO",
         rating: "9.0/10",
         character: "Tyrion Lannister",
-        review: " A groundbreaking series with complex characters and difficult political choices. Despite being relatives to each other, the plot is full of betrayals and unexpected twits. The show is stunning and the acting is top-notch, despite the controversial ending the journey to get there was worth it. Tyrion Lannister is the most complex and intelligent character in the show. He somehow manages to survive by using his mind and wit, even when he is surrounded by powerful enemies. His character is both satisfying and tragic at the same time, making his role unforgettable in the series. Overall, Game of Thrones is a must-watch for anyone who enjoys epic fantasy and complexity."
+        review: "A groundbreaking series with complex characters and difficult political choices..."
     },
     {
         title: "House Of The Dragon",
         studio: "HBO",
         rating: "7,5/10",
         character: "Daemon Targaryen",
-        review: "A thrilling prequel to the beloved Game of Thrones, House of the dragon brings the House Targaryen's story to life with high visuals and compelling storytelling. We can see the situation of the old houses 172 years before the Game of Thrones. Despite the series are not fully published yet, some of the series already managed to get 9.4 rating. The plot is similar to Game of Thrones but the behavior of characters and the point of view is different. I can recommend this to the fans of Game of Thrones. I did give a 7.5 rating for myself, because I yet did not see the all series and need a rewatch, in the future." 
+        review: "A thrilling prequel to the beloved Game of Thrones..."
     },
     {
         title: "The Notebook",
         studio: "Paramount Pictures",
         rating: "8.0/10",
         character: "Noah Calhoun",
-        review: "A touching romantic drama that explores the power of love and memory. The film beautifully descibes the difference between what is the love in teenage years and what is the love in adult years. The Notebook also dives into the problems which couples may face. Despite the sad parts, it gives us a chance to see the beauty of love and the importance of cherishing every moment with our loved ones. The performances by Ryan Gosling and Rachel McAdams are heartfelt and captivating, making their love story unforgettable. Overall, The Notebook is a timeless classic that will leave you with a warm heart and believing in the power of true love."
+        review: "A touching romantic drama that explores the power of love and memory..."
     },
     {
         title: "The Godfather",
         studio: "Paramount Pictures",
         rating: "9.9/10",
         character: "Michael Corleone",
-        review: "This one is a masterpice which dives into deep family dynamics and organized crime. The Godfather really teaches the audience about family matters and its bonds. Movie has parts and each has a unique value. No comment needed by far!"
+        review: "This one is a masterpice which dives into deep family dynamics and organized crime..."
     },
     {
         title: "Transformers (bayverse)",
         studio: "Paramount Pictures",
         rating: "10/10",
         character: "Bumblebee",
-        review: "This one is the best franchise I have ever seen. I can write an 1000 words essay about the film. However it is better to give it a watch. Believe me you won't regret your time. Well, when it comes to other transformers movies(non bayverse) they are not that good, I could give 7-7,5."
+        review: "This one is the best franchise I have ever seen..."
     },
     {
         title: "Harry Potter",
-        studio: "Warner Bros enetertainment",
+        studio: "Warner Bros entertainment",
         rating: "111/10",
         character: "Severus Snape",
-        review: "Actually everybody loves Harry Potter films. A guy whose family got killed secretly. But at the end after realizing who he really is, he realized his capabilities and did what he meant to do. Yeah it is clear that he witnessed a lot of difficulties in his way but in all this, his parents' souls were by his side and supported him. Also Dumbledore and Severus Snape protected him and yes his firends too. In my opinion, movie gives unforgettable emotions and shares different moods throughout the journey."
+        review: "Actually everybody loves Harry Potter films..."
     },
     {
         title: "Avengers",
@@ -272,7 +275,7 @@ const watchData = [
         studio: "Marvel",
         rating: "8/10",
         character: "Tom Holland",
-        review: "That one movie really gave me a hope of becoming a spider man frrr (when i was a kid btw). All the films are great but the ones which Tom Holland had a scene time is really enjoyable. Young nerdy and enjoyable kiddo which describes the spider man exactly."
+        review: "That one movie really gave me a hope of becoming a spider man frrr..."
     },
     {
         title: "others",
@@ -307,17 +310,18 @@ if (menuItems.length > 0 && detailsBox) {
             const targetWatch = watchData[index];
 
             setTimeout(() => {
-                displayTitle.innerText = targetWatch.title;
-                displayStudio.innerText = targetWatch.studio;
-                displayRating.innerText = targetWatch.rating;
-                displayCharacter.innerText = targetWatch.character;
-                displayReview.innerText = targetWatch.review;
+                if (displayTitle) displayTitle.innerText = targetWatch.title;
+                if (displayStudio) displayStudio.innerText = targetWatch.studio;
+                if (displayRating) displayRating.innerText = targetWatch.rating;
+                if (displayCharacter) displayCharacter.innerText = targetWatch.character;
+                if (displayReview) displayReview.innerText = targetWatch.review;
 
                 detailsBox.classList.remove('data-changing');
             }, 250); 
         });
     });
 }
+
 /* =========================================
    SECRET PIN LOGIC (Supports per-post PINs)
    ========================================= */
@@ -332,8 +336,6 @@ document.addEventListener('click', function(e) {
             const secretContent = modalBody.querySelector('#secret-content');
 
             const enteredPin = pinInput ? pinInput.value : "";
-            
-            // Get the specific PIN from the HTML data-pin attribute
             const correctPin = lockScreen ? lockScreen.getAttribute('data-pin') : "";
 
             if (enteredPin === correctPin) {
