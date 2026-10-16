@@ -1,108 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="games_of_thrones-removebg-preview.png">
-    <title>sanchez's blog - Home</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sanchez's blog - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            midnight: { bg: '#0B0F0E', card: '#151C19', accent: '#10B981', text: '#D1D5DB', muted: '#718078' },
+            milky: { bg: '#E8F5E9', card: '#FEFEFE', accent: '#059669', text: '#1F2937', muted: '#4B5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header class="site-header">
-    <h1 class="site-name">Sanjar</h1>
-    <p class="site-alias">alias: sanchez</p>
+<body class="bg-milky-bg dark:bg-midnight-bg text-milky-text dark:text-midnight-text bg-grid-light dark:bg-grid-dark font-mono min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- TOP NAVBAR -->
+  <header class="sticky top-0 z-50 bg-milky-card/90 dark:bg-midnight-card/90 backdrop-blur border-b border-milky-accent/20 dark:border-midnight-accent/20 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-4">
+      <a href="index.html" class="text-milky-accent dark:text-midnight-accent font-bold hover:opacity-80 flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-milky-accent dark:bg-midnight-accent"></span>
+        <span>dev@terminal:~/sanchez</span>
+      </a>
+      <nav class="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
+        <a href="index.html" class="px-3 py-1.5 rounded transition bg-milky-accent dark:bg-midnight-accent text-white dark:text-midnight-bg font-bold">/home</a>
+        <a href="blog.html" class="px-3 py-1.5 rounded transition hover:bg-milky-accent/10 dark:hover:bg-midnight-accent/10">/blogs</a>
+        <a href="cinema.html" class="px-3 py-1.5 rounded transition hover:bg-milky-accent/10 dark:hover:bg-midnight-accent/10">/cinema</a>
+        <a href="contact.html" class="px-3 py-1.5 rounded transition hover:bg-milky-accent/10 dark:hover:bg-midnight-accent/10">/contact</a>
+      </nav>
+      <button id="theme-toggle" class="text-xs px-2.5 py-1 rounded border border-milky-accent/40 dark:border-midnight-accent/40 hover:bg-milky-accent dark:hover:bg-midnight-accent hover:text-white dark:hover:text-midnight-bg transition">
+        <span id="theme-label">[MODE: DARK]</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
     
-    <nav class="site-nav">
-        <a href="index.html">home</a>
-        <a href="blog.html">blog</a>
-        <a href="movies.html">watch library</a>
-        
-        <!-- Theme Toggle moved here -->
-        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-            <i id="theme-icon" class="fa-solid fa-moon"></i>
-        </button>
-    </nav>
-</header>
-
-    <main class="container">
-        
-        <section class="about-me">
-            <h1>About Me</h1>
-            <p>Hey, I'm Sanjar.</p>
-            <p>Welcome! This is my personal space where I write posts about myself, my life, and random thoughts built right from my point of view.</p>
-            <p>I'm from Khanka, Khorezm, Uzbekistan, a place I've called home my entire life. I currently study at Khanka Specialized School, where I'm constantly exploring new ideas and looking for opportunities to learn beyond the classroom.</p>
-            <p>I'm passionate about football, movies, and coding—especially what I like to call vibe coding, where creativity matters just as much as the code itself. I enjoy building projects, experimenting with new technologies, and turning ideas into something people can actually use.</p>
-            <p>Outside of programming, you'll usually find me watching a great film, following football, or scrolling through social media that helps me to get refreshed. I'm especially interested in fantasy, science fiction, and stories that leave a lasting impression.</p>
-            <p>I'm someone who believes in continuous growth. Whether it's improving my English, learning new technical skills, or creating personal projects, I enjoy the process of becoming a little better every day.</p>
-            <p>This website is my digital corner—a place where I share what I'm building, what I'm learning, and the journey I'm on.</p>
-            <p>Feel free to look around, read my blog posts, or reach out directly using the automated forms below!</p>
-        </section>
-      <section class="timeline-section">
-    <h2>Little About My Journey</h2>
-    <div class="timeline">
-        <!-- Replace your current SVG with this -->
-<svg class="timeline-line" viewBox="0 0 600 100" preserveAspectRatio="none">
-    <!-- These points strictly alternate top (0) and bottom (100) -->
-    <polyline points="0,0 100,100 200,0 300,100 400,0 500,100 600,0" 
-              fill="none" stroke="#458b8b" stroke-width="4" />
-</svg>
-
-        <!-- Timeline items -->
-        <div class="timeline-item" data-event="I was born.">2010</div>
-        <div class="timeline-item" data-event="Went to school.">2017</div>
-        <div class="timeline-item" data-event="Got to IDUM.">2018</div>
-        <div class="timeline-item" data-event="Started math/english courses.">2020</div>
-        <div class="timeline-item" data-event="Passed test to Khanka school.">2022</div>
-        <div class="timeline-item" data-event="Got CEFR certification.">2024-25</div>
-        <div class="timeline-item" data-event="Achieved IELTS score.">2026</div>
-    </div>
-</section>
-
-    </main>
-
-    <button id="feedback-trigger" class="floating-feedback-btn" aria-label="Open Feedback Form">
-        <i class="fa-solid fa-comment-dots"></i> Feedback
-    </button>
-
-    <div id="feedback-modal" class="modal-overlay">
-        <div class="modal-content feedback-modal-box">
-            <button id="close-feedback-modal" class="close-btn" aria-label="Close modal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <div id="feedback-form-wrap">
-                <h2>Leave some Feedback</h2>
-                <form id="ajax-feedback-form">
-                    <input type="hidden" name="access_key" value="3434ec32-d96c-4555-9f42-986d51460357">
-                    
-                    <div class="form-group">
-                        <label for="telegram">Telegram Username *</label>
-                        <input type="text" name="name" id="telegram" placeholder="@username" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="opinion">Your Opinion/Feedback *</label>
-                        <textarea name="message" id="opinion" rows="4" placeholder="What do you think of the website?" required></textarea>
-                    </div>
-
-                    <button type="submit" id="feedback-submit-btn" class="submit-btn">Send Feedback</button>
-                </form>
-            </div>
-
-            <div id="feedback-success-wrap" class="success-state">
-                <i class="fa-solid fa-circle-check success-icon"></i>
-                <h2>Thank You!</h2>
-                <p>Your message flew securely directly into my email inbox.</p>
-            </div>
-        </div>
+    <!-- Hero / Introduction with Typewriter -->
+    <div class="bg-milky-card dark:bg-midnight-card border border-milky-accent/30 dark:border-midnight-accent/30 rounded-lg p-6 sm:p-8">
+      <div class="text-xs text-milky-accent dark:text-midnight-accent mb-3 font-semibold">$ cat introduction.txt</div>
+      <h1 class="text-2xl sm:text-4xl font-bold text-milky-text dark:text-midnight-text mb-4 min-h-[3rem] flex items-center">
+        <span id="typewriter-text"></span><span class="cursor bg-milky-accent dark:bg-midnight-accent"></span>
+      </h1>
+      <p class="text-milky-muted dark:text-midnight-muted max-w-2xl text-sm sm:text-base leading-relaxed mb-6">
+        Welcome! This is my personal space where I write posts about myself, my life, and random thoughts built right from my point of view. I'm from Khanka, Khorezm, Uzbekistan, studying at Khanka Specialized School.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="blog.html" class="bg-milky-accent dark:bg-midnight-accent text-white dark:text-midnight-bg font-semibold px-4 py-2 rounded text-sm hover:opacity-90 transition">View Blogs -></a>
+        <a href="cinema.html" class="border border-milky-accent dark:border-midnight-accent text-milky-accent dark:text-midnight-accent px-4 py-2 rounded text-sm hover:bg-milky-accent/10 transition">Watch Library</a>
+      </div>
     </div>
 
-    <footer>
-        <a href="https://t.me/snxrzip" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
-        <a href="https://www.instagram.com/snxr.zip?igsh=NjJ0cmE4MzF5bGdq" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-    </footer>
+    <!-- About Me Section -->
+    <div class="bg-milky-card dark:bg-midnight-card border border-milky-accent/30 dark:border-midnight-accent/30 rounded-lg p-6 sm:p-8">
+      <div class="text-xs text-milky-accent dark:text-midnight-accent mb-1">$ cat about_me.txt</div>
+      <h2 class="text-2xl font-bold mb-4">About Me</h2>
+      <div class="space-y-3 text-milky-muted dark:text-midnight-muted text-sm sm:text-base leading-relaxed">
+        <p>I'm passionate about football, movies, and coding—especially what I like to call vibe coding, where creativity matters just as much as the code itself. I enjoy building projects, experimenting with new technologies, and turning ideas into something people can actually use.</p>
+        <p>Outside of programming, you'll usually find me watching a great film, following football, or scrolling through social media that helps me to get refreshed. I'm especially interested in fantasy, science fiction, and stories that leave a lasting impression.</p>
+        <p>I'm someone who believes in continuous growth. Whether it's improving my English, learning new technical skills, or creating personal projects, I enjoy the process of becoming a little better every day.</p>
+      </div>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Timeline Section -->
+    <div class="bg-milky-card dark:bg-midnight-card border border-milky-accent/30 dark:border-midnight-accent/30 rounded-lg p-6 sm:p-8">
+      <div class="text-xs text-milky-accent dark:text-midnight-accent mb-1">$ ./timeline.sh --view</div>
+      <h2 class="text-2xl font-bold mb-6">Little About My Journey</h2>
+      
+      <div class="timeline flex flex-wrap justify-between items-center relative py-8 px-4 my-4 max-w-2xl mx-auto">
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="I was born.">2010</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Went to school.">2017</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Got to IDUM.">2018</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Started math/english courses.">2020</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Passed test to Khanka school.">2022</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Got CEFR certification.">24-25</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Achieved IELTS score.">2026</div>
+      </div>
+    </div>
+
+    <!-- Featured Project -->
+    <div class="bg-milky-card dark:bg-midnight-card border border-milky-accent/30 dark:border-midnight-accent/30 rounded-lg p-6 sm:p-8">
+      <div class="text-xs text-milky-accent dark:text-midnight-accent mb-1">$ ./showcase_project.sh</div>
+      <h2 class="text-2xl font-bold mb-2">Featured Project</h2>
+      <span class="inline-block text-xs px-2 py-0.5 rounded border border-milky-accent/40 text-milky-accent dark:text-midnight-accent mb-4">[Automation Bot]</span>
+      <h3 class="text-xl font-bold text-milky-text dark:text-midnight-text mb-2">Telegram Assistant Bot</h3>
+      <p class="text-milky-muted dark:text-midnight-muted text-sm sm:text-base leading-relaxed mb-6">
+        Python-based automated Telegram bot hosted on Railway/Render for schedule reminders, webhook handling, and task management.
+      </p>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="https://t.me/cipher_r_bot" target="_blank" rel="noopener noreferrer" class="bg-milky-accent dark:bg-midnight-accent text-white dark:text-midnight-bg font-semibold px-4 py-2 rounded text-sm hover:opacity-90 transition">Open Telegram Bot ↗</a>
+        <a href="https://github.com/abdukadirovv-pixel/telegram_real" target="_blank" rel="noopener noreferrer" class="border border-milky-accent dark:border-midnight-accent text-milky-accent dark:text-midnight-accent px-4 py-2 rounded text-sm hover:bg-milky-accent/10 transition">GitHub Repo ↗</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-milky-accent/20 dark:border-midnight-accent/20 py-4 text-center text-xs text-milky-muted dark:text-midnight-muted">
+    sanjar / sanchez terminal portfolio • Built with Pure HTML & Tailwind CSS
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sanchez's blog - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            midnight: { bg: '#0B0F0E', card: '#151C19', accent: '#10B981', text: '#D1D5DB', muted: '#718078' },
+            milky: { bg: '#E8F5E9', card: '#FEFEFE', accent: '#059669', text: '#1F2937', muted: '#4B5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-milky-bg dark:bg-midnight-bg text-milky-text dark:text-midnight-text bg-grid-light dark:bg-grid-dark font-mono min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- TOP NAVBAR -->
+  <header class="sticky top-0 z-50 bg-milky-card/90 dark:bg-midnight-card/90 backdrop-blur border-b border-milky-accent/20 dark:border-midnight-accent/20 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-4">
+      <a href="index.html" class="text-milky-accent dark:text-midnight-accent font-bold hover:opacity-80 flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-milky-accent dark:bg-midnight-accent"></span>
+        <span>dev@terminal:~/sanchez</span>
+      </a>
+      <nav class="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
+        <a href="index.html" class="px-3 py-1.5 rounded transition bg-milky-accent dark:bg-midnight-accent text-white dark:text-midnight-bg font-bold">/home</a>
+        <a href="blog.html" class="px-3 py-1.5 rounded transition hover:bg-milky-accent/10 dark:hover:bg-midnight-accent/10">/blogs</a>
+        <a href="cinema.html" class="px-3 py-1.5 rounded transition hover:bg-milky-accent/10 dark:hover:bg-midnight-accent/10">/cinema</a>
+        <a href="contact.html" class="px-3 py-1.5 rounded transition hover:bg-milky-accent/10 dark:hover:bg-midnight-accent/10">/contact</a>
+      </nav>
+      <button id="theme-toggle" class="text-xs px-2.5 py-1 rounded border border-milky-accent/40 dark:border-midnight-accent/40 hover:bg-milky-accent dark:hover:bg-midnight-accent hover:text-white dark:hover:text-midnight-bg transition">
+        <span id="theme-label">[MODE: DARK]</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
+    
+    <!-- Hero / Introduction with Typewriter -->
+    <div class="bg-milky-card dark:bg-midnight-card border border-milky-accent/30 dark:border-midnight-accent/30 rounded-lg p-6 sm:p-8">
+      <div class="text-xs text-milky-accent dark:text-midnight-accent mb-3 font-semibold">$ cat introduction.txt</div>
+      <h1 class="text-2xl sm:text-4xl font-bold text-milky-text dark:text-midnight-text mb-4 min-h-[3rem] flex items-center">
+        <span id="typewriter-text"></span><span class="cursor bg-milky-accent dark:bg-midnight-accent"></span>
+      </h1>
+      <p class="text-milky-muted dark:text-midnight-muted max-w-2xl text-sm sm:text-base leading-relaxed mb-6">
+        Welcome! This is my personal space where I write posts about myself, my life, and random thoughts built right from my point of view. I'm from Khanka, Khorezm, Uzbekistan, studying at Khanka Specialized School.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="blog.html" class="bg-milky-accent dark:bg-midnight-accent text-white dark:text-midnight-bg font-semibold px-4 py-2 rounded text-sm hover:opacity-90 transition">View Blogs -></a>
+        <a href="cinema.html" class="border border-milky-accent dark:border-midnight-accent text-milky-accent dark:text-midnight-accent px-4 py-2 rounded text-sm hover:bg-milky-accent/10 transition">Watch Library</a>
+      </div>
+    </div>
+
+    <!-- About Me Section -->
+    <div class="bg-milky-card dark:bg-midnight-card border border-milky-accent/30 dark:border-midnight-accent/30 rounded-lg p-6 sm:p-8">
+      <div class="text-xs text-milky-accent dark:text-midnight-accent mb-1">$ cat about_me.txt</div>
+      <h2 class="text-2xl font-bold mb-4">About Me</h2>
+      <div class="space-y-3 text-milky-muted dark:text-midnight-muted text-sm sm:text-base leading-relaxed">
+        <p>I'm passionate about football, movies, and coding—especially what I like to call vibe coding, where creativity matters just as much as the code itself. I enjoy building projects, experimenting with new technologies, and turning ideas into something people can actually use.</p>
+        <p>Outside of programming, you'll usually find me watching a great film, following football, or scrolling through social media that helps me to get refreshed. I'm especially interested in fantasy, science fiction, and stories that leave a lasting impression.</p>
+        <p>I'm someone who believes in continuous growth. Whether it's improving my English, learning new technical skills, or creating personal projects, I enjoy the process of becoming a little better every day.</p>
+      </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="bg-milky-card dark:bg-midnight-card border border-milky-accent/30 dark:border-midnight-accent/30 rounded-lg p-6 sm:p-8">
+      <div class="text-xs text-milky-accent dark:text-midnight-accent mb-1">$ ./timeline.sh --view</div>
+      <h2 class="text-2xl font-bold mb-6">Little About My Journey</h2>
+      
+      <div class="timeline flex flex-wrap justify-between items-center relative py-8 px-4 my-4 max-w-2xl mx-auto">
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="I was born.">2010</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Went to school.">2017</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Got to IDUM.">2018</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Started math/english courses.">2020</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Passed test to Khanka school.">2022</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Got CEFR certification.">24-25</div>
+        <div class="timeline-item flex-shrink-0 w-12 h-12 bg-midnight-bg border-2 border-emerald-500 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer relative z-10 m-2" title="Achieved IELTS score.">2026</div>
+      </div>
+    </div>
+
+    <!-- Featured Project -->
+    <div class="bg-milky-card dark:bg-midnight-card border border-milky-accent/30 dark:border-midnight-accent/30 rounded-lg p-6 sm:p-8">
+      <div class="text-xs text-milky-accent dark:text-midnight-accent mb-1">$ ./showcase_project.sh</div>
+      <h2 class="text-2xl font-bold mb-2">Featured Project</h2>
+      <span class="inline-block text-xs px-2 py-0.5 rounded border border-milky-accent/40 text-milky-accent dark:text-midnight-accent mb-4">[Automation Bot]</span>
+      <h3 class="text-xl font-bold text-milky-text dark:text-midnight-text mb-2">Telegram Assistant Bot</h3>
+      <p class="text-milky-muted dark:text-midnight-muted text-sm sm:text-base leading-relaxed mb-6">
+        Python-based automated Telegram bot hosted on Railway/Render for schedule reminders, webhook handling, and task management.
+      </p>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="https://t.me/cipher_r_bot" target="_blank" rel="noopener noreferrer" class="bg-milky-accent dark:bg-midnight-accent text-white dark:text-midnight-bg font-semibold px-4 py-2 rounded text-sm hover:opacity-90 transition">Open Telegram Bot ↗</a>
+        <a href="https://github.com/abdukadirovv-pixel/telegram_real" target="_blank" rel="noopener noreferrer" class="border border-milky-accent dark:border-midnight-accent text-milky-accent dark:text-midnight-accent px-4 py-2 rounded text-sm hover:bg-milky-accent/10 transition">GitHub Repo ↗</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-milky-accent/20 dark:border-midnight-accent/20 py-4 text-center text-xs text-milky-muted dark:text-midnight-muted">
+    sanjar / sanchez terminal portfolio • Built with Pure HTML & Tailwind CSS
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
