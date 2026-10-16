@@ -323,23 +323,22 @@ if (menuItems.length > 0 && detailsBox) {
 }
 
 /* =========================================
-   SECRET PIN LOGIC (Supports per-post PINs)
+   SECRET PIN LOGIC (Safe Container Traversal)
    ========================================= */
 document.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'unlock-btn') {
-        const modalBody = document.getElementById('modal-body');
+        const lockScreen = e.target.closest('.pin-container');
         
-        if (modalBody) {
-            const pinInput = modalBody.querySelector('#pin-input');
-            const errorText = modalBody.querySelector('#pin-error');
-            const lockScreen = modalBody.querySelector('#lock-screen');
-            const secretContent = modalBody.querySelector('#secret-content');
+        if (lockScreen) {
+            const pinInput = lockScreen.querySelector('input[type="password"]');
+            const errorText = lockScreen.querySelector('.error-text');
+            const secretContent = lockScreen.nextElementSibling;
 
             const enteredPin = pinInput ? pinInput.value : "";
-            const correctPin = lockScreen ? lockScreen.getAttribute('data-pin') : "";
+            const correctPin = lockScreen.getAttribute('data-pin');
 
             if (enteredPin === correctPin) {
-                if (lockScreen) lockScreen.style.display = "none";
+                lockScreen.style.display = "none";
                 if (secretContent) secretContent.style.display = "block";
             } else {
                 if (errorText) errorText.innerText = "Incorrect PIN. Try again!";
